@@ -2,7 +2,7 @@ package guru.springframework.spring5webapp.bootstrap;
 
 import guru.springframework.spring5webapp.model.Author;
 import guru.springframework.spring5webapp.model.Book;
-import guru.springframework.spring5webapp.model.repositories.AuthtirRepository;
+import guru.springframework.spring5webapp.model.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.model.repositories.BookRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private AuthtirRepository authtirRepository;
+    private AuthorRepository authorRepository;
     private BookRepository bookRepository;
 
-    public DevBootstrap(AuthtirRepository authtirRepository, BookRepository bookRepository) {
-        this.authtirRepository = authtirRepository;
+    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository) {
+        this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
     }
 
@@ -32,7 +32,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
-        authtirRepository.save(eric);
+        authorRepository.save(eric);
         bookRepository.save(ddd);
 
         // Rod
@@ -41,7 +41,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
 
-        authtirRepository.save(rod);
+        authorRepository.save(rod);
         bookRepository.save(noEJB);
 
     }
